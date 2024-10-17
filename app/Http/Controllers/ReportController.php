@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\reports;
+use App\Models\Report;
 
 class ReportController extends Controller
 {
     
     public function index(){
-        $reports = reports::all();
+        $reports = Report::all();
         return view('report.index', ['reports' => $reports]);
     }
 }

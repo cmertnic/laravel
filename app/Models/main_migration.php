@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class main_migration extends Model
+class Main_migration extends Model
 {
     use HasFactory;
 }
