@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Задание 2</title>
-    <link rel="stylesheet" href="/styles/home.css">
-</head>
-
-<body>
-    <header>
-        <div class="logo">
-            <img src="{{ url('img/logo.png') }}" alt="Example Image">
-        </div>
-        <ul class="menu">
-            <a href="/"><li>Главная</li></a>
-            <a href="/array"><li>Массивы</li></a>
-        </ul>
-    </header>
-    <main>
+@section('content') 
         <div>
         <div class="fish">
             <img class="fish_img" src="{{ url('img/fish.webp') }}" alt="Example Image">
@@ -29,11 +10,4 @@
                 optio natus nihil pariatur id. Iusto tenetur animi rerum voluptatibus?
             </p>
         </div>
-
-    </main>
-    <footer>
-<p>Скутин Леонид Андреевич, 2024</p>
-    </footer>
-</body>
-
-</html>
+@endsection
