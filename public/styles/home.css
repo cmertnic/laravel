@@ -40,6 +40,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     text-align: center;
     flex-wrap: wrap;
 }
@@ -103,4 +104,14 @@ table{
 table th{
  width: 200px;   
  border: 1px solid #A9E2CC;
+}
+.button_create{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.delete{
+    cursor: pointer;
+    width: 100%;
 }

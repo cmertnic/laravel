@@ -18,7 +18,7 @@
         <ul class="menu">
             <a href="/"><li>Главная</li></a>
             <a href="/array"><li>Массивы</li></a>
-            <a href="/reports"><li>репорты</li></a>
+            <a href="/reports"><li>жалобы</li></a>
         </ul>
     </header>
     <main>
