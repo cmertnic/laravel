@@ -12,4 +12,8 @@ class ReportController extends Controller
         $reports = Report::all();
         return view('report.index', ['reports' => $reports]);
     }
+    public function destroy(Report $report){
+        $report -> delete();
+        return redirect()->back();
+    }
 }

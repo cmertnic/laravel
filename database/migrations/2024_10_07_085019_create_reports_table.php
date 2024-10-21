@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('number');
             $table->text('description');
             $table->timestamp('created_at')->nullable();
-            $table->timestamp('upadted_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->softDeletes();
         });
     }
 
