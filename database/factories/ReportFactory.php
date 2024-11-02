@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Student;
+use App\Models\Report;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Report>
  */
-class StudentFactory extends Factory
+class ReportFactory extends Factory
 {
 
     /**
@@ -17,7 +17,7 @@ class StudentFactory extends Factory
      * @return array<string, mixed>
      */
 
-    protected $model = Student::class;
+    protected $model = Report::class;
 
     public function definition(): array
     {
