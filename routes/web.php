@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 Route::get('/array', [MainController::class, 'showArray'])->name('array');
 
-Route::get('/reports', [ReportController::class, 'index'])->name('report.index');
+Route::get('/reports', [ReportController::class, 'index'])->name('report.index')->middleware('auth');
 
 Route::delete('/reports/{report}', [ReportController::class, 'destroy'])->name('reports.destroy');
 

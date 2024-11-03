@@ -11,12 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('reports');
+    
         Schema::create('reports', function (Blueprint $table) {
+            // ... your table schema definition ...
             $table->id();
             $table->string('number');
             $table->text('description');
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
+            $table->unsignedBigInteger('status_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('set null')->onUpdate('cascade');
             $table->softDeletes();
         });
     }
