@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 
 @section('content') 
 <div class="cards">
@@ -10,6 +10,7 @@
                         <p class="card_text">Цена: {{ $item['price'] }} ₽</p>
                     </div>
                 </div>
+             <img src="" alt="">
         @endforeach
     </div>        
     @endsection
