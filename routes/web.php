@@ -4,11 +4,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ReportController;
-
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\Admin;
 Route::get('/', function () {
     return view('home');
 });
-
+Route::middleware((Admin::class))->group(function () {
+    Route::get('/admin',[AdminController::class,'index'])->name('admin.index'); 
+});
 
 Route::get('/array', [MainController::class, 'showArray'])->name('array');
 

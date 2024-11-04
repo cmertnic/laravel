@@ -8,7 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
-{
+{   const ADMIN_ROLE='admin';
+    public function isAdmin()
+    {
+        return $this->role === self::ADMIN_ROLE;
+    }
     use HasFactory, Notifiable;
     public function reports()
     {
