@@ -10,27 +10,33 @@ class Report extends Model
     use HasFactory,softDeletes;
     use SoftDeletes;
     public function user()
-{
-    return $this->belongsTo(User::class);
-}
+    {
+        return $this->belongsTo(User::class);
+    }
 
-public function setUser(User $user)
-{
-    $this->user_id = $user->id;
-    return $this;
-}
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
 
-public function getUser()
-{
-    return User::find($this->user_id);
-}
-protected $fillable = [
-    'number',
-    'description',
-    'status_id',
-    'user_id',
-    'created_at',
-    'updated_at',
-    'deleted_at',
-];
+    public function setStatus(Status $status)
+    {
+        $this->status_id = $status->id;
+        return $this;
+    }
+
+    public function getStatus()
+    {
+        return Status::find($this->status_id);
+    }
+
+    protected $fillable = [
+        'number',
+        'description',
+        'status_id',
+        'user_id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 }
