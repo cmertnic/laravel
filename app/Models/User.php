@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
-{   const ADMIN_ROLE='admin';
+{  public function FullName(){
+    return $this->surname.' '.$this->name.' '.$this->midlename;
+}
+     const ADMIN_ROLE='admin';
     public function isAdmin()
     {
         return $this->role === self::ADMIN_ROLE;
