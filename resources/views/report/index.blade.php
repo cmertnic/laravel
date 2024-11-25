@@ -1,6 +1,14 @@
    @extends('layouts.main')
 
     @section('content') 
+    <x-slot name="header">
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+{{__('Список заявлений')}}
+      </h2>
+    </x-slot>
+    <div class="py-12">
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<div class=" overflow-hidden shadow-sm sm:rounded-lg">
     <div class="cards">  <colgroup>
             <col span="2" style="background:Khaki">
           </colgroup>
@@ -33,7 +41,11 @@
   <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
     создать жалобу
   </button>
+</div>  
 </div>
+    </div>
+</div>
+
 
     
     <!-- Main modal -->
@@ -50,7 +62,6 @@
                       <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                       </svg>
-                      <span class="sr-only">Закрыть</span>
                   </button>
                 </div>
                 <!-- Modal body -->

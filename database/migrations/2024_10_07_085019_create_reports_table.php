@@ -7,28 +7,36 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Запуск миграции.
      */
     public function up(): void
     {
         Schema::dropIfExists('reports');
-    
+
         Schema::create('reports', function (Blueprint $table) {
-            // ... your table schema definition ...
             $table->id();
             $table->string('number');
             $table->text('description');
             $table->timestamps();
-            $table->unsignedBigInteger('status_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
-            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('set null')->onUpdate('cascade');
+            // Внешний ключ для статуса
+            $table->foreignId('status_id')
+                ->nullable()
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->nullOnDelete(); 
+            // Внешний ключ для пользователя
+            $table->foreignId('user_id') 
+                ->nullable()
+                ->constrained('users') 
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+
             $table->softDeletes();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Обратная миграция.
      */
     public function down(): void
     {

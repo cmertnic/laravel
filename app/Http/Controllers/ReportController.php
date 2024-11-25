@@ -4,41 +4,47 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Report;
+use Illuminate\Support\Facades\Auth; // Импортируйте фасад Auth
 
 class ReportController extends Controller
 {
     public function index()
     {
-        $reports = Report::paginate(10);
+        // Получаем отчеты только для текущего пользователя
+        $reports = Report::where('user_id', Auth::id())->paginate(10);
+        
         return view('report.index', ['reports' => $reports]);
     }
-
+    public function create() {
+        return view('report.create');
+    }
     public function destroy(Report $report)
     {
         $report->delete();
         return redirect()->back();
     }
-
     public function store(Request $request)
     {
         $data = $request->validate([
-            'number' => 'string', 
-            'description' => 'string', 
+            'number' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
         ]);
-
-        Report::create($data); 
+        Report::create([
+            'number' => $request->number,
+            'description' => $request->description,
+            'status_id' => 1,
+            'user_id' => Auth::user()->id,
+        ]);
         return redirect()->back();
     }
-
-    public function update(Request $request, Report $report)
-    {
-        $data = $request->validate([
-            'number' => 'string', 
-            'description' => 'string', 
+    public function update(Request $request) {
+        $request->validate([
+            'status_id' => ['required'],
+            'id' => ['required']
         ]);
-
-        $report->update($data);
-
+        Report::where('id', $request->id)->update([
+            'status_id' => $request->status_id,
+        ]);
         return redirect()->back();
     }
 

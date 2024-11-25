@@ -9,7 +9,10 @@ class MainController extends Controller
     public function showIndex(){
         return view('home');
     }
-
+    public function main()
+    {
+        return view('layouts.main');
+    }
     public function showArray(){
         $array = [
             ["id" => 1, "title" => "курица", "price" => 500,"path" => "img/chiken.jpg"],

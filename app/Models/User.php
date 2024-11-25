@@ -11,6 +11,7 @@ class User extends Authenticatable
 {  public function FullName(){
     return $this->surname.' '.$this->name.' '.$this->midlename;
 }
+
      const ADMIN_ROLE='admin';
     public function isAdmin()
     {
