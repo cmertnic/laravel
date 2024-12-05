@@ -16,10 +16,12 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::middleware([Admin::class])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index'); 
-    Route::patch('/update', [ReportController::class, 'update'])->name('reports.update');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::put('/reports/{id}', [AdminController::class, 'update'])->name('reports.update');
 });
+
 Route::get('/array', [MainController::class, 'showArray'])->name('array');
 
 Route::get('/reports', [ReportController::class, 'index'])->name('report.index')->middleware('auth');
