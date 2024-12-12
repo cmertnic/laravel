@@ -1,3 +1,11 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нарушений.нет</title>
+    <link rel="stylesheet" href="/styles/home.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -7,6 +15,7 @@
 
         <!-- Login -->
         <div>
+            <h1 class="text-center text-3xl">Вход</h1>
             <x-input-label for="Login" :value="__('Логин')" />
             <x-text-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus autocomplete="login" placeholder="логин" />
             <x-input-error :messages="$errors->get('login')" class="mt-2" />
@@ -14,7 +23,7 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Пароль')" />
+            <x-input-label for="password " :value="__('Пароль')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"

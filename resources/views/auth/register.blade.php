@@ -1,8 +1,17 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нарушений.нет</title>
+    <link rel="stylesheet" href="/styles/home.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
          <!-- Name -->
          <div>
+            <h1 class="text-center text-3xl">Регистрация</h1>
             <x-input-label for="name" :value="__('Имя')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Имя"  />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />

@@ -12,10 +12,10 @@
 
 <body>
     <header>
-        <div class="logo">
+        <div class="logo max-xl:hidden">
             <p class="logo__text ">Нарушений.нет</p>
         </div>
-        <ul class="menu w-[520px]"  >
+        <ul class="menu w-[520px] "  >
             <a href="/home"><li>рыба</li></a>
             <a href="/array"><li>Массивы</li></a>
             <a href="/"><li>жалобы</li></a>
@@ -34,10 +34,6 @@
                     </x-slot>
 
                     <x-slot name="content"  >
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -56,9 +52,6 @@
     <main>
         @yield("content")
     </main>
-    <footer>
-<p>Скутин Леонид Андреевич, 2024</p>
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@1.4.7/dist/flowbite.min.js"></script>
 </body>
 

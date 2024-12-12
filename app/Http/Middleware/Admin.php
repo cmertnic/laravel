@@ -10,7 +10,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         if (!auth()->user() || !auth()->user()->isAdmin()) {
-            \Log::info('User  is not admin, redirecting to dashboard.');
+            Log::info('User  is not admin, redirecting to dashboard.');
             return redirect()->route('dashboard');
         }
     

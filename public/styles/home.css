@@ -60,9 +60,9 @@ footer{
 }
 .cards {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 1000px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
 }
@@ -96,7 +96,6 @@ footer{
 
 table{
     background-color: rgb(75, 75, 75);
-    width: 1800px;
     height: auto;
     align-items: center;
     text-align: center;
