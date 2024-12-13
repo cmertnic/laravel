@@ -35,7 +35,7 @@ class ReportController extends Controller
             'status_id' => 1,
             'user_id' => Auth::user()->id,
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('info','Заявление отправлено');
     }
     public function update(Request $request) {
         $request->validate([

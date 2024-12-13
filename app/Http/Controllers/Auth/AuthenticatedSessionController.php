@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         if(auth()->user()->isAdmin()){
             return redirect()->route('admin.index');
         }
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('dashboard', absolute: false))->with('success','Вы вошли в систему');
     }
 
     /**

@@ -11,7 +11,7 @@ class Admin
     {
         if (!auth()->user() || !auth()->user()->isAdmin()) {
             Log::info('User  is not admin, redirecting to dashboard.');
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with('error','Авторизуйтесь под Администратором');
         }
     
         return $next($request);
