@@ -34,7 +34,7 @@
               <td>{{ $item['created_at'] }}</td>
               <td>{{ $item->number }}</td>
               <td>{{ $item['description'] }}</td>   
-              <td>{{ Auth::user()->fullname() }}</td> 
+              <td>{{ $item->user->fullname() }}</td>
               <td>
                 <form method="POST" action="{{ route('reports.update', $item->id) }}" class="status-form" id="form-{{ $item->id }}">
                   @csrf

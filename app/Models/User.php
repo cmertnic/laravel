@@ -11,7 +11,10 @@ class User extends Authenticatable
 {  public function FullName(){
     return $this->middlename.' '.$this->name.' '.$this->surname;
 }
-
+public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
      const ADMIN_ROLE='admin';
     public function isAdmin()
     {
