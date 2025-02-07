@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Report;
-use Illuminate\Support\Facades\Auth; // Импортируйте фасад Auth
-
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Storage;
 class ReportController extends Controller
 {
     public function index()
@@ -28,10 +28,15 @@ class ReportController extends Controller
         $data = $request->validate([
             'number' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
+            'path_img' => 'image|mimes:png,jpg,jpeg,gif|max:800',
         ]);
+        $imageName=Storage::disk('public')->put('/reports',$request->file('path_img'));
+        $imageName=time() . '.' . $request['path_img']->extension();
+        $request['path_img']->move(public_path('storage'),$imageName);
         Report::create([
             'number' => $request->number,
             'description' => $request->description,
+            'path_img'=>$imageName,
             'status_id' => 1,
             'user_id' => Auth::user()->id,
         ]);
@@ -39,7 +44,7 @@ class ReportController extends Controller
     }
     public function update(Request $request) {
         $request->validate([
-            'status_id' => ['required'],
+            'status_id' => ['required', 'exists:statuses,id'],
             'id' => ['required']
         ]);
         Report::where('id', $request->id)->update([

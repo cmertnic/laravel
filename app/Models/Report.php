@@ -16,7 +16,7 @@ class Report extends Model
 
     public function status()
     {
-        return $this->belongsTo(Statyses::class); 
+        return $this->belongsTo(Status::class); 
     }
     public function setStatus(Status $status)
     {
@@ -33,6 +33,7 @@ class Report extends Model
         'number',
         'description',
         'status_id',
+        'path_img',
         'user_id',
         'created_at',
         'updated_at',

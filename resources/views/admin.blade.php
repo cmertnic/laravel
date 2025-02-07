@@ -1,4 +1,5 @@
- @extends('layouts.main')
+@extends('layouts.main')
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="/styles/home.css">
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 @section('content') 
 <x-slot name="header">
   <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -27,6 +29,7 @@
             <th>№ авто</th>
             <th>Описание</th>
             <th>ФИО автора</th>
+            <th>Изображение</th>
             <th>Статус</th>
           </tr>
           @foreach($reports as $item)      
@@ -35,6 +38,13 @@
               <td>{{ $item->number }}</td>
               <td>{{ $item['description'] }}</td>   
               <td>{{ $item->user->fullname() }}</td>
+              <td>
+                @if($item->path_img)
+                <img src="{{Storage::url($item->path_img)}}"class="contact-block_img" alt="">
+                @else
+                  <span>Нет изображения</span>
+                @endif
+              </td>
               <td>
                 <form method="POST" action="{{ route('reports.update', $item->id) }}" class="status-form" id="form-{{ $item->id }}">
                   @csrf
@@ -72,14 +82,16 @@
                           backgroundColor = ''; 
                           break;
                       default:
-                          textColor = 'black';
+                      textColor = 'black';
                   }
-              
+
                   selectElement.style.color = textColor;
                   applicationContainer.style.backgroundColor = backgroundColor;
 
-if (selectedValue != '2' || selectElement.selectedIndex !== 2&&selectedValue != '3' || selectElement.selectedIndex !== 3) 
-{ const form = document.getElementById('form-' + applicationId); form.submit(); }
+                  if (selectedValue != '2' || selectElement.selectedIndex !== 2 && selectedValue != '3' || selectElement.selectedIndex !== 3) {
+                      const form = document.getElementById('form-' + applicationId);
+                      form.submit();
+                  }
               }
               
               window.onload = function() {
@@ -114,7 +126,6 @@ if (selectedValue != '2' || selectElement.selectedIndex !== 2&&selectedValue != 
                   applicationContainer.style.backgroundColor = backgroundColor;
               }
               </script>
-                                   
               </td>
             </tr>       
           @endforeach 

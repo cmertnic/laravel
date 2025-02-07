@@ -6,25 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Запуск миграции.
-     */
+
     public function up(): void
     {
         Schema::dropIfExists('reports');
+
 
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string('number');
             $table->text('description');
+            $table->string('path_img')->nullable(); 
             $table->timestamps();
-            // Внешний ключ для статуса
+
             $table->foreignId('status_id')
                 ->nullable()
                 ->constrained()
                 ->cascadeOnUpdate()
-                ->nullOnDelete(); 
-            // Внешний ключ для пользователя
+                ->nullOnDelete();
+                
             $table->foreignId('user_id') 
                 ->nullable()
                 ->constrained('users') 
@@ -35,9 +35,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Обратная миграция.
-     */
     public function down(): void
     {
         Schema::dropIfExists('reports');

@@ -15,7 +15,7 @@ public function user()
 {
     return $this->belongsTo(User::class, 'user_id');
 }
-     const ADMIN_ROLE='admin';
+    const ADMIN_ROLE='admin';
     public function isAdmin()
     {
         return $this->role === self::ADMIN_ROLE;
@@ -58,7 +58,6 @@ public function user()
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }

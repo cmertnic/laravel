@@ -18,6 +18,7 @@
         <th>Описание</th>
         <th>Дата создания</th>
         <th>Статус</th>
+        <th>изображение</th>
       </tr>
     @foreach($reports as $item)      
       <tr >
@@ -40,7 +41,11 @@
             Принято
         @endif
     </th>
-    
+    <th>
+      @isset($item->path_img)
+      <img src="{{Storage::url($item->path_img)}}"class="contact-block_img" alt="">
+      @endisset
+    </th>
       </tr>       
     @endforeach 
   </table>
@@ -87,6 +92,11 @@
                         <label  for="описание" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">описание</label>
                         <textarea name="description" rows="5" cols="33" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Да"></textarea>
                     </div>
+                    <div>
+                      <label  for="path_img" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">номер авто</label>
+                      <x-text-input id="path_img" class="block mt-1" type="file" name="path_img" required/>
+                      <x-input-error:messages="errors->get('path_img') class="mt-2"></x-input-error:messages=>
+                  </div>
                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Создать</button>
             </form>
             </div>

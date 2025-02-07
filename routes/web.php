@@ -10,7 +10,7 @@ use App\Http\Middleware\Admin;
 //Route::get('/', function () {
 //    return redirect()->route('report.index'); 
 //});
-Route::get('/', [ReportController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [ReportController::class, 'index'])->middleware(['auth', 'verified'])->name('/');
 
 Route::get('/home', function () {
     return view('home');
